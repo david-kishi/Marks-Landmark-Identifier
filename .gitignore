@@ -1,0 +1,15 @@
+### macOS ###
+# General
+.DS_Store
+
+### Jupyter Notebook ###
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+### Data ###
+# Ignore images of Mars. Unnecessarily big for repo
+data/hirise-map-proj-v3
