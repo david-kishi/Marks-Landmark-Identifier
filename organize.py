@@ -14,19 +14,10 @@ class_names = [
 ]
 
 # Dictionary to hold file names for each class
-labels_dict = {
-    "0": [],
-    "1": [],
-    "2": [],
-    "3": [],
-    "4": [],
-    "5": [],
-    "6": [],
-    "7": [],
-}
+labels_dict = {"0": [], "1": [], "2": [], "3": [], "4": [], "5": [], "6": [], "7": []}
 
 # Open txt that holds all file names and labels
-labels = open("hirise-map-proj-v3\labels-map-proj-v3.txt", "r")
+labels = open("hirise-map-proj-v3/labels-map-proj-v3.txt", "r")
 
 # Sort file names into lists
 for line in labels:
