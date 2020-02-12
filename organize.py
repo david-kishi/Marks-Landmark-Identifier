@@ -1,3 +1,6 @@
+# Imports
+import os, shutil
+
 # Mars Landmark Classes
 class_names = [
     "other",
@@ -78,3 +81,24 @@ print(
         ]
     ),
 )
+
+# Copy files into batch folders
+for key, val in labels_dict.items():
+    # Create directory
+    try:
+        path = f"hirise-map-proj-v3/{class_names[int(key)]}"
+        if not os.path.isdir(path):
+            os.mkdir(path)
+    except OSError:
+        print("Creation of the directory %s failed" % path)
+    else:
+        print("Successfully created the directory %s" % path)
+
+    for item in val:
+        try:
+            source = f"hirise-map-proj-v3/map-proj-v3/{item}"
+            destination = f"hirise-map-proj-v3/{class_names[int(key)]}/{item}"
+            dest = shutil.copyfile(source, destination)
+            print(f"Copied '{source}' to '{dest}'")
+        except Exception as e:
+            print(e)
