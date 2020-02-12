@@ -1,19 +1,24 @@
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Activation
+### Python 2/3 Compatibility Import
+from __future__ import absolute_import, division, print_function, unicode_literals
 
-#
+### Imports
+# TensorFlow and tf.keras
+import tensorflow as tf
+from tensorflow.keras import datasets, layers, models
 
-# CNN Model
-model = Sequential(
-    [
-        Dense(32, input_shape=(784,)),
-        Activation("relu"),
-        Dense(10),
-        Activation("softmax"),
-    ]
-)
+# Helper libraries
+import numpy as np
+import matplotlib.pyplot as plt
 
-model.add(Dense(5))
-model.add(Activation("relu"))
 
-model.summary()
+### Mars Landmark Classes
+class_names = [
+    "other",
+    "crater",
+    "dark dune",
+    "slope streak",
+    "bright dune",
+    "impact ejecta",
+    "swiss cheese",
+    "spider",
+]
