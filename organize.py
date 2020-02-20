@@ -1,3 +1,5 @@
+# PYTHON VERSION MUST BE >= 3.6
+
 # Imports
 import os, shutil
 from random import randint
@@ -47,17 +49,17 @@ for key in training_dict:
     while len(test_dict[key]) < 50:
         try:
             test_dict[key].append(
-                training_dict[key].pop(randint(0, len(training_dict[key])))
+                training_dict[key].pop(randint(0, len(training_dict[key]) - 1))
             )
         except:
             pass
 
 # Create training and testing directory
 try:
-    path = f"hirise-map-proj-v3/training/"
+    path = "hirise-map-proj-v3/training/"
     if not os.path.isdir(path):
         os.mkdir(path)
-    path = f"hirise-map-proj-v3/testing/"
+    path = "hirise-map-proj-v3/testing/"
     if not os.path.isdir(path):
         os.mkdir(path)
 except OSError:
@@ -101,7 +103,7 @@ for key, val in test_dict.items():
     for item in val:
         try:
             source = f"hirise-map-proj-v3/map-proj-v3/{item}"
-            destination = f"hirise-map-proj-v3/training/{class_names[int(key)]}/{item}"
+            destination = f"hirise-map-proj-v3/testing/{class_names[int(key)]}/{item}"
             dest = shutil.copyfile(source, destination)
             print(f"Copied '{source}' to '{dest}'")
         except Exception as e:
