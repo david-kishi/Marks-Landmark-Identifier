@@ -13,6 +13,7 @@ ipython_config.py
 ### Data ###
 # Ignore images of Mars. Unnecessarily big for repo
 hirise-map-proj-v3/
+tmp/
 
 ### Visual Studio Code ###
 .vscode/*
