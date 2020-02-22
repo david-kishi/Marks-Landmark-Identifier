@@ -3,7 +3,6 @@ import os, sys
 import tensorflow as tf
 import cv2
 import pathlib
-import argparse
 
 # DECLARATIONS
 IMG_WIDTH = IMG_HEIGHT = 128
