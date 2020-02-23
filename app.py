@@ -20,22 +20,25 @@ def load_image_into_numpy_array(image):
 
 # Function to return prediction class name
 def prediction(arr):
-    if arr[0] == 1:
-        return CLASS_NAMES[0]
-    elif arr[1] == 1:
-        return CLASS_NAMES[1]
-    elif arr[2] == 1:
-        return CLASS_NAMES[2]
-    elif arr[3] == 1:
-        return CLASS_NAMES[3]
-    elif arr[4] == 1:
-        return CLASS_NAMES[4]
-    elif arr[5] == 1:
-        return CLASS_NAMES[5]
-    elif arr[6] == 1:
-        return CLASS_NAMES[6]
-    elif arr[7] == 1:
-        return CLASS_NAMES[7]
+    temp = arr.round()
+    if temp[0] == 1:
+        return arr[0], CLASS_NAMES[0]
+    elif temp[1] == 1:
+        return arr[1], CLASS_NAMES[1]
+    elif temp[2] == 1:
+        return arr[2], CLASS_NAMES[2]
+    elif temp[3] == 1:
+        return arr[3], CLASS_NAMES[3]
+    elif temp[4] == 1:
+        return arr[4], CLASS_NAMES[4]
+    elif temp[5] == 1:
+        return arr[5], CLASS_NAMES[5]
+    elif temp[6] == 1:
+        return arr[6], CLASS_NAMES[6]
+    elif temp[7] == 1:
+        return arr[7], CLASS_NAMES[7]
+    else:
+        return 0, "NONE"
 
 
 # Load Model
@@ -58,10 +61,11 @@ while True:
     gray = np.reshape(gray, (1, IMG_WIDTH, IMG_HEIGHT, 1)).astype(np.float32)
 
     # Get prediction
-    prd = prediction(model.predict(gray, batch_size=1, steps=1, verbose=0).round()[0])
+    prd_base = model.predict(gray, batch_size=1, steps=1, verbose=0)
+    prob, prd = prediction(prd_base[0])
 
     # Output image and prediction
-    cv2.putText(img, prd, (50, 50), font, 1, (0, 0, 255), 2, cv2.LINE_AA)
+    cv2.putText(img, f"{prd}, {prob}", (50, 50), font, 1, (0, 0, 255), 2, cv2.LINE_AA)
     cv2.imshow("JMARS", img)
 
     # Press q to end
