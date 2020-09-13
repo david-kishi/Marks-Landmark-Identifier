@@ -1,5 +1,11 @@
 # Mars Landmark Identifier
-Identifying Mars Landmarks utilizing Convolutional Neural Networks.
+Identifying Mars landmarks type utilizing Convolutional Neural Networks.
+
+## Description
+The Mars Landmark Identifier (MLI), utilizes computer vision to identify the type of landmark currently being looked at using a trained convolutional neural network. The dataset used to train the model was NASA's Mar's Orbiter HiRISE images, which NASA has already deduced down to several category types. (Dataset info and source can be referred to below)
+
+## What's next for MLI
+The next objective for MLI is to transition from an image classification model to an object detection model, which would be able to detect multiple types of landmarks in one image. The issue with the image classification model is at times there will be more than one type of landmark in view, which confuses the model.
 
 ## Dataset
 Mars orbital image (HiRISE) labeled data set version 3<br>
